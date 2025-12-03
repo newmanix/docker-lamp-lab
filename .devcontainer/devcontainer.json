@@ -1,10 +1,17 @@
 {
-  "name": "LAMP Lab",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {}
-  },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git",
-  "postAttachCommand": "cp -f .bashrc ~/.bashrc && . ~/.bashrc && git pull --all",
-  "forwardPorts": [80]
+    "name": "Docker Lab",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/docker-from-docker:1": {}
+    },
+    "forwardPorts": [8080],
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-azuretools.vscode-docker"
+        ]
+      }
+    },
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git && docker --version && docker compose version",
+    "postAttachCommand": "cp -f .bashrc ~/.bashrc && . ~/.bashrc && git pull --all"
 }
